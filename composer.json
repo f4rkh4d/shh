@@ -1,0 +1,31 @@
+{
+    "name": "f4rkh4d/shh",
+    "description": "share a secret once, encrypted in your browser.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.3",
+        "ext-sqlite3": "*",
+        "ext-pdo_sqlite": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shh\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shh\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "serve": "php -S 127.0.0.1:8088 -t public router.php"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
