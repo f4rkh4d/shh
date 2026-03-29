@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>shh — share a secret, once.</title>
+    <meta name="description" content="one-time secret links. encrypted in your browser, burned on first open.">
+    <meta name="theme-color" content="#f7f5f0">
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<main class="wrap">
+    <header class="top">
+        <div class="logo">
+            <span class="dot"></span>
+            <span>shh</span>
+        </div>
+        <p class="tag">share a secret. once.</p>
+    </header>
+
+    <section class="card" id="compose">
+        <label for="secret" class="label">paste the secret</label>
+        <textarea id="secret" rows="6" maxlength="4096" placeholder="api keys, recovery codes, whatever you'd regret putting in slack."></textarea>
+        <div class="meta">
+            <span id="chars">0</span> chars
+        </div>
+
+        <div class="row">
+            <label for="ttl" class="label">self-destruct after</label>
+            <select id="ttl">
+                <option value="3600">1 hour</option>
+                <option value="21600">6 hours</option>
+                <option value="86400" selected>24 hours</option>
+                <option value="259200">3 days</option>
+            </select>
+        </div>
+
+        <button id="go" class="primary">burn after read</button>
+        <p class="err" id="err" hidden></p>
+    </section>
+
+    <section class="card" id="result" hidden>
+        <p class="label">your one-time link</p>
+        <div class="urlbox">
+            <code id="url"></code>
+        </div>
+        <div class="actions">
+            <button id="copy" class="secondary">copy</button>
+            <button id="again" class="ghost">make another</button>
+        </div>
+        <p class="note">the decrypt key sits after the <code>#</code> in the url. the server never gets it. first person to open the link sees it. after that: 404.</p>
+        <p class="note" id="expiry"></p>
+    </section>
+
+    <footer class="foot">
+        <p>mit · <a href="https://github.com/f4rkh4d/shh">source</a> · <a href="https://frkhd.com/shh">frkhd.com</a></p>
+        <p class="tiny">i don't log anything. the server only stores ciphertext, and deletes it on first read.</p>
+    </footer>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>
