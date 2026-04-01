@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>shh — reveal</title>
+    <meta name="theme-color" content="#f7f5f0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<main class="wrap">
+    <header class="top">
+        <div class="logo">
+            <span class="dot"></span>
+            <span>shh</span>
+        </div>
+        <p class="tag">one look only.</p>
+    </header>
+
+    <section class="card" id="gate">
+        <p class="label">someone sent you a secret</p>
+        <p class="note">click reveal and this link dies. if you refresh after, the server returns 404 — the row is already gone.</p>
+        <button id="reveal" class="primary">reveal</button>
+        <p class="err" id="err" hidden></p>
+    </section>
+
+    <section class="card" id="shown" hidden>
+        <p class="label">the secret</p>
+        <pre id="plain" class="plaintext" readonly></pre>
+        <div class="actions">
+            <button id="copy" class="secondary">copy</button>
+        </div>
+        <p class="note tiny">already burned. close this tab when you're done.</p>
+    </section>
+
+    <footer class="foot">
+        <p>mit · <a href="https://github.com/f4rkh4d/shh">source</a></p>
+    </footer>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>
