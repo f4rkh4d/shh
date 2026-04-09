@@ -1,7 +1,7 @@
 # shh
 
 
-![api demo](docs/hero.gif)
+![api demo](docs/demo.gif)
 share a secret once. the server never sees the plaintext. first open burns it.
 
 the use case is narrow: you need to hand someone a password or api key, and you don't want it sitting in slack or email archives forever. shh gives you a link that works exactly once, with the decrypt key living in the url fragment so it never reaches my server.
