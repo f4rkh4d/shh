@@ -10,7 +10,7 @@ the use case is narrow: you need to hand someone a password or api key, and you 
 
 - your browser generates a random aes-gcm-256 key and a 12-byte iv.
 - it encrypts the secret, posts `{ciphertext, iv}` to `/api/new`. the server stores those bytes under a random token. the key never leaves the browser.
-- you get a url like `https://shh.frkhd.com/x/<token>#k=<base64url-key>`. the bit after `#` is the fragment — browsers don't send it in http requests, so my server can't log it even if i wanted to.
+- you get a url like `https://shh.frkhd.com/x/<token>#k=<base64url-key>`. the bit after `#` is the fragment. browsers don't send it in http requests, so my server can't log it even if i wanted to.
 - recipient opens the link. their browser posts to `/api/burn/<token>`, the server atomically reads the row, deletes it, and returns the ciphertext. the browser decrypts using the fragment. refresh the page and you get a 404. the row is gone.
 
 ## install
@@ -64,7 +64,7 @@ the hosted instance is at [shh.frkhd.com](https://shh.frkhd.com) if you just wan
 
 **caveats, being honest:** if your laptop is owned, shh doesn't help. if you paste the secret into a site that exfiltrates to a logging service, shh doesn't help. this is the layer above: stopping secrets from living forever in slack or email. it's not an endpoint security tool.
 
-probably has bugs i haven't hit yet. rate limiting is file-backed and kind of naive — good enough for a hobby instance, i wouldn't put it in front of anything serious without a real limiter.
+probably has bugs i haven't hit yet. rate limiting is file-backed and kind of naive. good enough for a hobby instance, i wouldn't put it in front of anything serious without a real limiter.
 
 ## license
 
